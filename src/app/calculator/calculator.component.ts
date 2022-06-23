@@ -59,4 +59,16 @@ export class CalculatorComponent implements OnInit {
     console.log(this.files);
     this.files.splice(index, 1);
   }
+
+  getTotalSize() {
+    let sum = 0;
+    this.files.forEach((file: File) => {
+      sum += file.size;
+    });
+    return sum / 1024 / 1024;
+  }
+
+  calculateFee() {
+    alert("Hello");
+  }
 }
