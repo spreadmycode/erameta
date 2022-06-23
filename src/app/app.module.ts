@@ -13,6 +13,10 @@ import { StepperComponent } from './stepper/stepper.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FileDragNDropDirective } from './file-drag-n-drop.directive';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { MaterialExampleModule } from '../material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,11 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
     MatSnackBarModule,
     MatDialogModule,
     MatIconModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
