@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
+import { calculate } from '@metaplex/arweave-cost';
 
 @Component({
   selector: 'app-calculator',
@@ -10,12 +11,15 @@ import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.compone
 })
 export class CalculatorComponent implements OnInit {
   public files: any[] = [];
+  public calculating: boolean = false;
+  public fee: number = 0;
 
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   onFileChange(pFileList: File[]) {
+    this.fee = 0;
     this.files = Object.keys(pFileList).map((key: any) => pFileList[key]);
     this._snackBar.open('Successfully upload!', 'Close', {
       duration: 2000,
@@ -23,6 +27,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   onFileInputChange(event: any) {
+    this.fee = 0;
     const element = event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
     if (fileList) {
@@ -33,6 +38,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   deleteFile(f: File) {
+    this.fee = 0;
     this.files = this.files.filter(function (w) {
       return w.name != f.name;
     });
@@ -65,10 +71,28 @@ export class CalculatorComponent implements OnInit {
     this.files.forEach((file: File) => {
       sum += file.size;
     });
-    return sum / 1024 / 1024;
+    return sum;
   }
 
-  calculateFee() {
-    alert("Hello");
+  async calculateFee() {
+    this.calculating = true;
+    try {
+      const cost = await calculate([this.getTotalSize()]);
+      this.fee = cost.solana * cost.solanaPrice;
+    } catch (e: any) {
+      this._snackBar.open(e.message, 'Close', {
+        duration: 6000,
+      });
+      this.fee = 0;
+    }
+    this.calculating = false;
+  }
+
+  getTitle() {
+    if (this.calculating) {
+      return 'Calculating...';
+    } else {
+      return 'Calculate';
+    }
   }
 }
