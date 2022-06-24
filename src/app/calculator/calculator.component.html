@@ -26,11 +26,11 @@
   </div>
   <hr />
   <div class="control-pane">
-    <h3 mat-subheader>Files</h3>
-    <h3 class="fee-wrapper" *ngIf="fee">{{ fee }} USD</h3>
+    <h3 mat-subheader class="title-files">Files</h3>
+    <h3 class="fee-wrapper" *ngIf="fee">$ {{ fee }}</h3>
     <div class="control-wrapper">
       <h4 *ngIf="files.length">
-        Total Size {{ (getTotalSize() / 1024 / 1024).toFixed(2) }} MB
+        Size: {{ (getTotalSize() / 1024 / 1024).toFixed(2) }} MB
       </h4>
       <span *ngIf="files.length" class="calculate" (click)="calculateFee()"
         ><mat-icon>calculate</mat-icon
