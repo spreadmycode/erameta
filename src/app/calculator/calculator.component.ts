@@ -79,6 +79,8 @@ export class CalculatorComponent implements OnInit {
   }
 
   async calculateFee() {
+    if (this.calculating) return;
+    
     this.calculating = true;
     try {
       const cost = await calculate([this.getTotalSize()]);
