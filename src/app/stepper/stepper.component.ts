@@ -37,7 +37,6 @@ export class StepperComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]> | any) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-    moveItemInArray(this.actives, event.previousIndex, event.currentIndex);
   }
 
   onNewValueChanged(event: any) {
@@ -48,10 +47,11 @@ export class StepperComponent implements OnInit {
     event.preventDefault();
 
     this.movies.push(this.newValue);
-    this.actives.push(true);
-    for (let i = 0; i < this.actives.length - 1; i++) {
+
+    for (let i = 0; i < this.actives.length; i++) {
       this.actives[i] = false;
     }
+    this.actives.push(true);
   }
 
   onUpdateValueChanged(event: any) {
@@ -65,6 +65,11 @@ export class StepperComponent implements OnInit {
       this.tempValue = this.movies[index];
     }
     this.movies[index] = this.tempValue;
+    for (let i = 0; i < this.actives.length; i++) {
+      this.actives[i] = false;
+    }
+    this.actives[index] = true;
+
     this.tempValue = '';
   }
 
@@ -72,7 +77,9 @@ export class StepperComponent implements OnInit {
     event.preventDefault();
 
     for (let i = 0; i < this.actives.length; i++) {
-      this.actives[i] = false;
+      if (i != index) {
+        this.actives[i] = false;
+      }
     }
     this.actives[index] = !this.actives[index];
   }
