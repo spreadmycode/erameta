@@ -11,6 +11,7 @@
             type="file"
             name="file"
             id="file"
+            accept="image/*"
             (change)="onFileInputChange($event)"
             multiple
           />
@@ -25,10 +26,12 @@
     </div>
   </div>
   <hr />
+  <h3 class="fee-wrapper" *ngIf="fee">Fee: $ {{ fee }}</h3>
   <div class="control-pane">
-    <h3 mat-subheader class="title-files">Files</h3>
-    <h3 class="fee-wrapper" *ngIf="fee">$ {{ fee }}</h3>
     <div class="control-wrapper">
+      <h3 mat-subheader class="title-files">
+        Files <span *ngIf="files.length">{{ getFilesLength() }}</span>
+      </h3>
       <h4 *ngIf="files.length">
         Size: {{ (getTotalSize() / 1024 / 1024).toFixed(2) }} MB
       </h4>
@@ -38,6 +41,7 @@
       >
     </div>
   </div>
+
   <div class="row fileItem" *ngFor="let f of files; let ind = index">
     <div class="col-sm-12 fileItemIconDiv" (click)="openConfirmDialog(ind)">
       <mat-icon>delete</mat-icon>

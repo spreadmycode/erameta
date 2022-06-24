@@ -74,6 +74,10 @@ export class CalculatorComponent implements OnInit {
     return sum;
   }
 
+  getFilesLength() {
+    return this.files.length;
+  }
+
   async calculateFee() {
     this.calculating = true;
     try {
