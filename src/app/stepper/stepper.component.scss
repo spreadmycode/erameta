@@ -1,7 +1,7 @@
 .stepper-wrapper {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 10px;
@@ -23,8 +23,8 @@
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
@@ -56,4 +56,96 @@
   border: dotted 3px #999;
   min-height: 60px;
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.new-step {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.new-input {
+  margin-right: 10px;
+  width: 300px;
+}
+
+.primary-width {
+  width: 300px;
+}
+
+.form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 5px 5px 5px 20px;
+  border-left: dashed 0.5px lightgray;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 6px;
+  border: dashed 1px lightgray;
+}
+
+.step-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  background-color: transparent;
+  transition: all 0.5s;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.step-header:hover {
+  background-color: #7b1fa2;
+  color: white;
+}
+
+.step-header-active {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  background-color: #7b1fa2;
+  transition: background-color 0.5s;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  border-radius: 100%;
+  font-size: 12px;
+  background-color: #7b1fa2;
+  color: white;
+  overflow: hidden;
 }

@@ -28,7 +28,7 @@ input[type="file"] {
 }
 
 .textLink {
-  background-color: #f45e61;
+  background-color: #7b1fa2;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@ input[type="file"] {
 }
 
 .textLink:hover {
-  background-color: #c93b3e;
+  background-color: #530f70;
 }
 
 .text-wrapper {
@@ -70,8 +70,8 @@ input[type="file"] {
   transition: 0.3s ease;
 }
 .fileItem:hover {
-  border: 1px solid #c33838;
-  background-color: #c33838bf;
+  border: 1px solid #7b1fa2;
+  background-color: #7b1fa2;
 }
 .fileItem:hover .fileItemIcon::before {
   content: "\f00d";
@@ -113,7 +113,7 @@ input[type="file"] {
   align-items: center;
 }
 .calculate {
-  background-color: #f45e61;
+  background-color: #7b1fa2;
   display: inline-flex;
   width: 120px;
   height: fit-content;
@@ -130,7 +130,7 @@ input[type="file"] {
   margin-left: 10px;
 }
 .calculate:hover {
-  background-color: #c93b3e;
+  background-color: #530f70;
 }
 .calculate-title {
   flex-grow: 1;

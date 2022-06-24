@@ -1,8 +1,47 @@
 <div class="stepper-wrapper">
+  <div class="new-step">
+    <form>
+      <mat-form-field class="new-input" appearance="fill">
+        <mat-label>Step Label</mat-label>
+        <input
+          matInput
+          placeholder="Step Label"
+          (input)="onNewValueChanged($event)"
+          value="{{ newValue }}"
+        />
+      </mat-form-field>
+      <button mat-button mat-raised-button color="primary" (click)="addStep()">
+        Add Step
+      </button>
+    </form>
+  </div>
+
   <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+    <div class="example-box" *ngFor="let movie of movies; let i = index" cdkDrag>
       <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-      {{ movie }}
+      <div class="{{getHeaderClass(i)}}" (click)="toggleActive(i)"><span class="step-number">{{i + 1}}</span>{{ movie }}</div>
+      <form class="form" *ngIf="actives[i]" [@enterAnimation]>
+        <div class="step-content">
+        <mat-form-field class="primary-width" appearance="outline">
+          <mat-label>Step Label</mat-label>
+          <input
+            matInput
+            placeholder="Step Label"
+            (input)="onUpdateValueChanged($event)"
+            value="{{ movie }}"
+          />
+        </mat-form-field>
+        <button
+          class="primary-width"
+          mat-button
+          mat-raised-button
+          color="primary"
+          (click)="updateStep(i)"
+        >
+          Save
+        </button>
+      </div>
+      </form>
     </div>
   </div>
 </div>
