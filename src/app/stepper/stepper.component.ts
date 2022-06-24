@@ -44,7 +44,9 @@ export class StepperComponent implements OnInit {
     this.newValue = event.target.value;
   }
 
-  addStep() {
+  addStep(event: any) {
+    event.preventDefault();
+
     this.movies.push(this.newValue);
     this.actives.push(true);
     for (let i = 0; i < this.actives.length - 1; i++) {
@@ -56,7 +58,9 @@ export class StepperComponent implements OnInit {
     this.tempValue = event.target.value;
   }
 
-  updateStep(index: number) {
+  updateStep(event: any, index: number) {
+    event.preventDefault();
+
     if (this.tempValue == '') {
       this.tempValue = this.movies[index];
     }
@@ -64,7 +68,9 @@ export class StepperComponent implements OnInit {
     this.tempValue = '';
   }
 
-  toggleActive(index: number) {
+  toggleActive(event: any, index: number) {
+    event.preventDefault();
+
     for (let i = 0; i < this.actives.length; i++) {
       this.actives[i] = false;
     }

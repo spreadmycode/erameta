@@ -10,7 +10,7 @@
           value="{{ newValue }}"
         />
       </mat-form-field>
-      <button mat-button mat-raised-button color="primary" (click)="addStep()">
+      <button mat-button mat-raised-button color="primary" (click)="addStep($event)">
         Add Step
       </button>
     </form>
@@ -19,7 +19,7 @@
   <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box" *ngFor="let movie of movies; let i = index" cdkDrag>
       <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-      <div class="{{getHeaderClass(i)}}" (click)="toggleActive(i)"><span class="step-number">{{i + 1}}</span>{{ movie }}</div>
+      <div class="{{getHeaderClass(i)}}" (click)="toggleActive($event, i)"><span class="step-number">{{i + 1}}</span>{{ movie }}</div>
       <form class="form" *ngIf="actives[i]" [@enterAnimation]>
         <div class="step-content">
         <mat-form-field class="primary-width" appearance="outline">
@@ -36,7 +36,7 @@
           mat-button
           mat-raised-button
           color="primary"
-          (click)="updateStep(i)"
+          (click)="updateStep($event, i)"
         >
           Save
         </button>

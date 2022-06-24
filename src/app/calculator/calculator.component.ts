@@ -47,7 +47,9 @@ export class CalculatorComponent implements OnInit {
     });
   }
 
-  openConfirmDialog(pIndex: number): void {
+  openConfirmDialog(event: any, pIndex: number): void {
+    event.preventDefault();
+
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       panelClass: 'modal-xs',
     });
@@ -78,9 +80,11 @@ export class CalculatorComponent implements OnInit {
     return this.files.length;
   }
 
-  async calculateFee() {
+  async calculateFee(event: any) {
+    event.preventDefault();
+
     if (this.calculating) return;
-    
+
     this.calculating = true;
     try {
       const cost = await calculate([this.getTotalSize()]);

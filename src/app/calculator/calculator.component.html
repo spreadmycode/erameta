@@ -35,7 +35,7 @@
       <h4 *ngIf="files.length">
         Size: {{ (getTotalSize() / 1024 / 1024).toFixed(2) }} MB
       </h4>
-      <span *ngIf="files.length" class="calculate" (click)="calculateFee()"
+      <span *ngIf="files.length" class="calculate" (click)="calculateFee($event)"
         ><mat-icon>calculate</mat-icon
         ><span class="calculate-title">{{ getTitle() }}</span></span
       >
@@ -43,7 +43,7 @@
   </div>
 
   <div class="row fileItem" *ngFor="let f of files; let ind = index">
-    <div class="col-sm-12 fileItemIconDiv" (click)="openConfirmDialog(ind)">
+    <div class="col-sm-12 fileItemIconDiv" (click)="openConfirmDialog($event, ind)">
       <mat-icon>delete</mat-icon>
     </div>
     <div class="col-sm-12 fileItemSize">

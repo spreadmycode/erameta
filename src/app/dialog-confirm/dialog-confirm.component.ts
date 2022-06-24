@@ -14,10 +14,12 @@ export class DialogConfirmComponent implements OnInit {
 
   ngOnInit() {}
 
-  confirm() {
+  confirm(event: any) {
+    event.preventDefault();
     this.modalRef.close(this.fIndex);
   }
-  cancel() {
+  cancel(event: any) {
+    event.preventDefault();
     this.modalRef.close();
   }
 }
